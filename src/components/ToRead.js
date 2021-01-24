@@ -1,9 +1,9 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import Row from './Row'
+import Row from './ToReadRow'
 
 
-export const ToRead = ({ list, setList, current, setCurrent }) => {
+const ToRead = ({ list, setList, current, setCurrent }) => {
 
     const AddButton = () => {
         function handleAdd() {
@@ -71,3 +71,5 @@ export const ToRead = ({ list, setList, current, setCurrent }) => {
         </div>
     )
 }
+
+export default ToRead;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const ReadRow = ({ item, onMigrate, onRemove, onUpdate }) => {
     const [title, setTitle] = useState(item.name)
