@@ -47,8 +47,9 @@ function App() {
 
 
   return (
+    <div style={appcss}>
     <div style={sidebarcss}>
-      <Sidebar style={sidebarcss}
+      <Sidebar
         toRead={toRead}
         current={current}
         finished={finished}
@@ -57,18 +58,21 @@ function App() {
         setFinished={setFinished}
     />
     </div>
+    </div>
   );
+}
+
+const appcss = {
 }
 
 const sidebarcss = {
   // marginLeft: '60%',
   // marginRight: '10px',
   // minWidth: '400px',
-  // width: '30%',
-
   position: 'absolute',
-  width: '30%',
-  left: '70%'
+  right: '30px',
+  padding: '30px'
+  // left: '80%'
 }
 
 export default App;

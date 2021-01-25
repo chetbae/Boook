@@ -17,9 +17,9 @@ const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
     }
 
     return(
-        <div>
+        <div style={{maxWidth:'280px'}}>
             <h1>Currently Reading:</h1>
-            <ul style={{listStyleType:"none", padding:'20 20 0 0'}}>
+            <ul style={{listStyleType:"none"}}>
                 { list.map((item) => (
                     <li key={item.id}>
                         <Row 
@@ -30,7 +30,7 @@ const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
                     </li>
                 ))}
             </ul>
-            <p id="b" style={{position:'relative', left:'24%', opacity:0.24}}>finished reading? :P</p>
+            <div style={{padding: '0px 0px 0px 20%', opacity:0.24}}>finished reading? :P</div><br/>
         </div>
     );
 }
