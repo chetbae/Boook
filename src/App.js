@@ -22,34 +22,23 @@ const toReadList = [
   }
 ];
 
-var exampleStartDate = new Date("2021-01-01");
-
 const currentList = [
   {
       id: 'd',
       name: 'Harry Potter',
-      start: {exampleStartDate},
+      start: Date("2020-01-12"),
       end: null
   }
 ];
-
-exampleStartDate = new Date("2020-01-12");
-var exampleEndDate = new Date("2020-30-12");
 
 const doneReadingList = [
   {
       id: 'e',
       name: 'Atomic Habits',
-      start: {exampleStartDate},
-      end: {exampleEndDate}
+      start: new Date("2020-12-01"),
+      end: new Date("2020-12-31")
   }
 ];
-
-// const fullList = {
-//   toread: toReadList,
-//   current: currentList,
-//   done: doneReadingList
-// }
 
 function App() {
   const [toRead, setToRead] = useState(toReadList);
@@ -58,15 +47,28 @@ function App() {
 
 
   return (
-    <Sidebar
-      toRead={toRead}
-      current={current}
-      finished={finished}
-      setToRead={setToRead}
-      setCurrent={setCurrent}
-      setFinished={setFinished}
+    <div style={sidebarcss}>
+      <Sidebar style={sidebarcss}
+        toRead={toRead}
+        current={current}
+        finished={finished}
+        setToRead={setToRead}
+        setCurrent={setCurrent}
+        setFinished={setFinished}
     />
+    </div>
   );
+}
+
+const sidebarcss = {
+  // marginLeft: '60%',
+  // marginRight: '10px',
+  // minWidth: '400px',
+  // width: '30%',
+
+  position: 'absolute',
+  width: '30%',
+  left: '70%'
 }
 
 export default App;

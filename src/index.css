@@ -7,6 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1::selection, 
+p::selection, 
+button::selection { 
+  background: none
+}
+
+span::selection {
+  background: rgb(124, 124, 124);
+  color: white
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

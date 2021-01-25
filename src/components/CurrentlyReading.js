@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Row from './CurrentlyReadingRow';
 
 const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
@@ -11,8 +11,7 @@ const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
     }
 
     function moveToFinished(item) {
-        let today = new Date();
-        const newItem = { ...item, end:{today} };
+        const newItem = { ...item, end:new Date() };
         const newFinishedList = finished.concat( newItem );
         setFinished(newFinishedList);
     }
@@ -20,7 +19,7 @@ const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
     return(
         <div>
             <h1>Currently Reading:</h1>
-            <ul>
+            <ul style={{listStyleType:"none", padding:'20 20 0 0'}}>
                 { list.map((item) => (
                     <li key={item.id}>
                         <Row 
@@ -31,6 +30,7 @@ const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
                     </li>
                 ))}
             </ul>
+            <p id="b" style={{position:'relative', left:'24%', opacity:0.24}}>finished reading? :P</p>
         </div>
     );
 }
