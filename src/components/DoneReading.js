@@ -25,6 +25,7 @@ const DoneReading = ({ list }) => {
                     )
                 )}
             </div>
+            <br/>
         </div>
     )
 }

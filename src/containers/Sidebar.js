@@ -9,7 +9,7 @@ const Sidebar = ({ toRead, current, finished, setToRead, setCurrent, setFinished
 
     return (
         <div style={sidebarBlock}>
-        {/* <div> */}
+            <br/><br/>
             <ToRead
                 list={toRead} 
                 setList={setToRead}
@@ -21,6 +21,8 @@ const Sidebar = ({ toRead, current, finished, setToRead, setCurrent, setFinished
                 setList={setCurrent}
                 finished={finished}
                 setFinished={setFinished}
+                toRead={toRead}
+                setToRead={setToRead}
             />
             <DoneReading
                 list={finished}

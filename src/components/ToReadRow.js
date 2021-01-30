@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import { RemoveButton, MoveButton } from "../styles/Sidebar";
 
 const ReadRow = ({ item, onMigrate, onRemove, onUpdate }) => {

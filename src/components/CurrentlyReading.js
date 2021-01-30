@@ -2,7 +2,7 @@ import React from 'react';
 import Row from './CurrentlyReadingRow';
 import { innerBlock, content } from '../styles/Sidebar';
 
-const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
+const CurrentlyReading = ({ list, setList, finished, setFinished, toRead, setToRead }) => {
 
     function removeItem(id) {
         const newList = list.filter((item) => (
@@ -15,23 +15,30 @@ const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
         const newItem = { ...item, end:new Date() };
         const newFinishedList = finished.concat( newItem );
         setFinished(newFinishedList);
+        removeItem(item.id);
+    }
+
+    function moveToRead(item) {
+        const newItem = { ...item, start: null };
+        const newToReadList = toRead.concat( newItem );
+        setToRead(newToReadList);
+        removeItem(item.id);
     }
 
     return(
         <div style={innerBlock}>
             <h1>Currently Reading:</h1>
-            <div style={{...content, width:"17rem"}}>
+            <div style={{...content, width:"24rem", right:0}}>
             {list.map((item) => (
                         <Row 
                             id={item.id}
                             item={item} 
-                            handleMove={moveToFinished}
-                            handleRemove={removeItem}
+                            handleFinished={moveToFinished}
+                            handleToRead={moveToRead}
                         />
                 ))}
             
             </div>
-            {/* <div style={{position: "relative", bottom: "0",s left:"12rem", opacity:0.24}}>finished reading? :P</div><br/> */}
         </div>
     );
 }

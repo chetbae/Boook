@@ -14,10 +14,12 @@ const ToRead = ({ list, setList, current, setCurrent }) => {
     }
 
     const AddButton = () => {
+        
         function handleAdd() {
             //check if no-book exists
             if (list.length === 0);
-            // else if (list[list.length-1].name === 'Edit Me!') return;
+            else if (list[list.length-1].name === 'Edit Me!') return;
+
             //add new-book
             const blankItem = {
                 name: 'Edit Me!',
@@ -31,7 +33,7 @@ const ToRead = ({ list, setList, current, setCurrent }) => {
         }
 
         return (
-            <StyledButton type="button" onClick={handleAdd}>
+            <StyledButton onClick={handleAdd}>
                 Add Book
             </StyledButton>
         )

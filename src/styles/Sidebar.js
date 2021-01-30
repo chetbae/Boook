@@ -8,10 +8,13 @@ export const StyledButton = styled.button`
     font-weight: bold;
     border-width: 3px;
     border-color: black;
-    background-color: Transparent;
+    background-color: white;
     display: table-cell;
     vertical-align: middle;
     transition: all 0.2s linear;
+    position:fixed;
+    right:3rem;
+    top:2rem;
 
     &:hover {
         color: white;
@@ -67,9 +70,8 @@ export const MoveButton = styled.button`
 export const sidebarBlock = {
     height: '100vh',
     overflow: "scroll",
-    padding: "2rem",
+    paddingRight: "2rem",
     // backgroundColor: "green",
-
 }
 
 // ToRead block ----->
@@ -89,9 +91,9 @@ export const toReadH1 = {
 }
 
 export const toReadHeader = {
-    display: 'inline', 
-    position:"absolute", 
-    right:"2rem", top:"1rem",
+    // display: 'inline', 
+    // position:"absolute", 
+    // right:"2rem", top:"1rem",
 }
 
 // <-----
