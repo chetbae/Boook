@@ -66,13 +66,10 @@ const appcss = {
 }
 
 const sidebarcss = {
-  // marginLeft: '60%',
-  // marginRight: '10px',
-  // minWidth: '400px',
-  position: 'absolute',
-  right: '30px',
-  padding: '30px'
-  // left: '80%'
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
 }
 
 export default App;

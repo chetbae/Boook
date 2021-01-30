@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Row from './CurrentlyReadingRow';
+import { innerBlock, content } from '../styles/Sidebar';
 
 const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
 
@@ -17,20 +18,20 @@ const CurrentlyReading = ({ list, setList, finished, setFinished }) => {
     }
 
     return(
-        <div style={{maxWidth:'280px'}}>
+        <div style={innerBlock}>
             <h1>Currently Reading:</h1>
-            <ul style={{listStyleType:"none"}}>
-                { list.map((item) => (
-                    <li key={item.id}>
+            <div style={{...content, width:"17rem"}}>
+            {list.map((item) => (
                         <Row 
+                            id={item.id}
                             item={item} 
                             handleMove={moveToFinished}
                             handleRemove={removeItem}
                         />
-                    </li>
                 ))}
-            </ul>
-            <div style={{padding: '0px 0px 0px 20%', opacity:0.24}}>finished reading? :P</div><br/>
+            
+            </div>
+            {/* <div style={{position: "relative", bottom: "0",s left:"12rem", opacity:0.24}}>finished reading? :P</div><br/> */}
         </div>
     );
 }

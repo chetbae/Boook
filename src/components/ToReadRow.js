@@ -1,26 +1,7 @@
-import { RemoveButton, MoveButton } from "../styles/ToReadRow";
-import styled from 'styled-components';
+import { render } from "@testing-library/react";
+import { RemoveButton, MoveButton } from "../styles/Sidebar";
 
 const ReadRow = ({ item, onMigrate, onRemove, onUpdate }) => {
-
-    function handleBlur() {
-        let field = document.getElementById(item.id).textContent;
-        if (field === 'Click Me!' || field === '') onRemove(item.id);
-        else onUpdate(item, field);
-    }
-
-    // function handleEnter(e) {
-    //     if (e.key === 'Enter') onUpdate(item, e.target.value);
-    // }
-
-    function handleRemove() {
-        onRemove(item.id);
-    }
-
-    function handleMigrate() {
-        onMigrate(item);
-        onRemove(item.id);
-    }
 
     function textGenerator() {
         let num = Math.floor(Math.random() * 11);
@@ -34,13 +15,49 @@ const ReadRow = ({ item, onMigrate, onRemove, onUpdate }) => {
         return phrase;
     }
 
+    function handleFocus() {
+        if (item.name === "Edit Me!") {
+            let range = document.createRange();
+            range.selectNodeContents(document.getElementById(item.id));
+            let sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+    }
+
+    function handleBlur() {
+        let field = document.getElementById(item.id).textContent;
+        if (field === 'Edit Me!' || field === '') onRemove(item.id);
+        else onUpdate(item, field);
+    }
+
+    function keyPress(e) {
+        if(e.charCode === 13) {
+            let field = document.getElementById(item.id).textContent;
+            onUpdate(item, field);
+            e.preventDefault();
+            document.activeElement.blur();
+        }
+    }
+
+    function handleRemove() {
+        onRemove(item.id);
+    }
+
+    function handleMigrate() {
+        onMigrate(item);
+        onRemove(item.id);
+    }
+
     return (
         <div>
             <RemoveButton onClick={handleRemove}/>
             <span id={item.id}
                     contentEditable
+                    onClick={handleFocus}
                     onBlur={handleBlur}
-                    style={{outline: 'none'}}
+                    onKeyPress={keyPress}
+                    style={{outline: 'none',spellcheck:"false"}}
                 >{item.name}</span>
                 
                 <MoveButton onClick={handleMigrate} >{textGenerator()}</MoveButton>

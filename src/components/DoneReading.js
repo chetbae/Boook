@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
+import { innerBlock, content } from '../styles/Sidebar';
+
+const StyledBlock = styled.h2`
+    font-weight: 800;
+    word-wrap: break-word;
+    display: inline;
+    width: 100px;
+    max-width: 100px;
+`
+
 
 const DoneReading = ({ list }) => {
-    const arr = ['black','black', 'red', 'black', 'black'];
-
-    const StyledBlock = styled.h3`
-        font-weight: 700;
-        word-wrap: break-word;
-        display: inline;
-        width: 100px;
-        max-width: 100px;
-    `
+    const arr = ['black','red', 'black', 'black']
 
     return (
-        <div style={{maxWidth:'280px'}}>
+        <div style={innerBlock}>
             <h1>Done Reading:</h1>
-            {list.map((item, index) => (
-                    <StyledBlock style={{color:arr[index%6]}}>
-                        {item.name.replaceAll(/\s/g,'')}
-                    </StyledBlock>
-                )
-            )}
+            <div style={{...content, paddingRight:"0.5rem", /*textAlign: "right",borderStyle:"solid"*/}}>
+                {list.map((item, index) => (
+                        <StyledBlock style={{color:arr[index%5]}}>
+                            {item.name.replaceAll(/\s/g,'')}
+                        </StyledBlock>
+                    )
+                )}
+            </div>
         </div>
     )
 }

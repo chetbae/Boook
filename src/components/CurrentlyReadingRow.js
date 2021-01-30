@@ -8,26 +8,17 @@ const StyledButton = styled.button`
     background-color: white;
     padding: 2px 7px 2px 7px;
     transition: all 0.5s ease;
-    margin: 2px 0px;
+    margin: 0.5rem;
     &:hover {
         box-shadow: 5px 5px;
         margin: 5px;
     }
 
 `
-const StyledDiv = styled.div`
-    button:focus + span {
-        opacity: 0.6;
-    }
-`
-const StyledSpan = styled.span`
-button:focus + span {
-    opacity: 0.6;
-}
-`
 
 
-const CurrentlyReadingRow = ({ item, handleMove, handleRemove }) => {
+
+const CurrentlyReadingRow = ({ id, item, handleMove, handleRemove }) => {
 
     function handleMigrate() {
         handleMove(item);
@@ -35,7 +26,7 @@ const CurrentlyReadingRow = ({ item, handleMove, handleRemove }) => {
     };
 
     return (
-            <StyledButton id="a" onClick={handleMigrate} >{item.name}</StyledButton>
+            <StyledButton id={id} onClick={handleMigrate} >{item.name}</StyledButton>
     );
 }
 
