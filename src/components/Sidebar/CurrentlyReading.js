@@ -1,6 +1,6 @@
 import React from 'react';
 import Row from './CurrentlyReadingRow';
-import { innerBlock, content } from '../styles/Sidebar';
+import { innerBlock, content } from '../../styles/Sidebar';
 
 const CurrentlyReading = ({ list, setList, finished, setFinished, toRead, setToRead }) => {
 
@@ -12,7 +12,9 @@ const CurrentlyReading = ({ list, setList, finished, setFinished, toRead, setToR
     }
 
     function moveToFinished(item) {
-        const newItem = { ...item, end:new Date() };
+        let today = new Date();
+        let numberOfDaysSinceEpoch = Math.floor(today/8.64e7)
+        const newItem = { ...item, end: numberOfDaysSinceEpoch };
         const newFinishedList = finished.concat( newItem );
         setFinished(newFinishedList);
         removeItem(item.id);
@@ -31,7 +33,7 @@ const CurrentlyReading = ({ list, setList, finished, setFinished, toRead, setToR
             <div style={{...content, width:"24rem", right:0}}>
             {list.map((item) => (
                         <Row 
-                            id={item.id}
+                            key={item.id}
                             item={item} 
                             handleFinished={moveToFinished}
                             handleToRead={moveToRead}

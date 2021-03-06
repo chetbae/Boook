@@ -1,64 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Sidebar from './containers/Sidebar'
+import Calendar from './containers/Calendar'
+import { useStorage } from './components/useStorage'
+import { Wip } from './components/wip.js'
 
-const toReadList = [ 
-  { 
-      id: 'a',
-      name: 'Moby Dick',
-      start: null,
-      end: null
-  },
-  {
-      id: 'b',
-      name: 'Emma',
-      start: null,
-      end: null
-  },
-  {
-      id: 'c',
-      name: 'The Hungry Caterpillar',
-      start: null,
-      end: null
-  }
-];
-
-const currentList = [
-  {
-      id: 'd',
-      name: 'Harry Potter',
-      start: Date("2020-01-12"),
-      end: null
-  }
-];
-
-const doneReadingList = [
-  {
-      id: 'e',
-      name: 'Atomic Habits',
-      start: new Date("2020-12-01"),
-      end: new Date("2020-12-31")
-  }
-];
 
 function App() {
-  const [toRead, setToRead] = useState(toReadList);
-  const [current, setCurrent] = useState(currentList);
-  const [finished, setFinished] = useState(doneReadingList);
+  const [toRead, setToRead] = useStorage('toRead');
+  const [current, setCurrent] = useStorage('current');
+  const [done, setDone] = useStorage('done');
 
 
   return (
     <div style={appcss}>
-    <div style={sidebarcss}>
-      <Sidebar
-        toRead={toRead}
-        current={current}
-        finished={finished}
-        setToRead={setToRead}
-        setCurrent={setCurrent}
-        setFinished={setFinished}
-    />
+      <div style={sidebarcss}>
+        <Sidebar
+          toRead={toRead}
+          current={current}
+          finished={done}
+          setFinished={setDone}
+          setCurrent={setCurrent}
+          setToRead={setToRead}
+        />
+      </div>
+        <Calendar 
+          current={current}
+          done={done}
+        />
+        <Wip>
+          Coming Soon!
+        </Wip>
     </div>
-    </div>
+    
   );
 }
 

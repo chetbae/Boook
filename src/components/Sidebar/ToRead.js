@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import Row from './ToReadRow'
-import { StyledButton, StyledUl, innerBlock, content, toReadH1, toReadHeader } from '../styles/Sidebar'
+import { AddButton, StyledUl, innerBlock, content} from '../../styles/Sidebar'
 
 const ToRead = ({ list, setList, current, setCurrent }) => {
 
@@ -13,7 +13,7 @@ const ToRead = ({ list, setList, current, setCurrent }) => {
         setList(newList);
     }
 
-    const AddButton = () => {
+    const AddBookButton = () => {
         
         function handleAdd() {
             //check if no-book exists
@@ -33,9 +33,9 @@ const ToRead = ({ list, setList, current, setCurrent }) => {
         }
 
         return (
-            <StyledButton onClick={handleAdd}>
+            <AddButton onClick={handleAdd}>
                 Add Book
-            </StyledButton>
+            </AddButton>
         )
     }
 
@@ -49,9 +49,10 @@ const ToRead = ({ list, setList, current, setCurrent }) => {
     // helper for moving toread book to currentlyreading; starts the date as time clicked
     function moveToCurrent(item) {
         let today = new Date();
+        let numberOfDaysSinceEpoch = Math.floor(today/8.64e7)
         const newList = current.concat({
             ...item,
-            start: {today}
+            start: numberOfDaysSinceEpoch
         })
         setCurrent(newList)
     }
@@ -60,8 +61,8 @@ const ToRead = ({ list, setList, current, setCurrent }) => {
     return (
         <div>
         <div style={innerBlock}>
-            <h1 style={toReadH1}>To-Read:</h1>      
-            <p style={toReadHeader}><AddButton/></p>
+            <h1>To-Read:</h1>      
+            <AddBookButton/>
             <div style={{...content, overflow: "scroll", maxHeight: "26vh"}}>
                 <StyledUl>
                     {list.map((item) => (

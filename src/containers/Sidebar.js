@@ -1,7 +1,7 @@
 import React from "react";
-import ToRead from "../components/ToRead";
-import CurrentlyReading from "../components/CurrentlyReading";
-import DoneReading from "../components/DoneReading";
+import ToRead from "../components/Sidebar/ToRead";
+import CurrentlyReading from "../components/Sidebar/CurrentlyReading";
+import DoneReading from "../components/Sidebar/DoneReading";
 import { sidebarBlock } from "../styles/Sidebar"
 
 
@@ -27,6 +27,7 @@ const Sidebar = ({ toRead, current, finished, setToRead, setCurrent, setFinished
             <DoneReading
                 list={finished}
             />
+            <br/><br/><br/><br/>
         </div>
     )
 }

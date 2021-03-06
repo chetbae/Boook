@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button`
+export const AddButton = styled.button`
     width: 120px;
     height: 45px;
     color: black;
@@ -88,12 +88,6 @@ export const content = {
 export const toReadH1 = {
     display: 'inline', 
     verticalAlign:'middle'
-}
-
-export const toReadHeader = {
-    // display: 'inline', 
-    // position:"absolute", 
-    // right:"2rem", top:"1rem",
 }
 
 // <-----

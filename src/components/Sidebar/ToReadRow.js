@@ -1,4 +1,4 @@
-import { RemoveButton, MoveButton } from "../styles/Sidebar";
+import { RemoveButton, MoveButton } from "../../styles/Sidebar";
 
 const ReadRow = ({ item, onMigrate, onRemove, onUpdate }) => {
 

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import colours from "./colours";
-import { NavLink } from "react-router-dom";
 
 const largeText = "64px";
 const bodyText = "32px";
@@ -64,7 +63,7 @@ const Titles = styled(Body)`
     font-size: ${smallText};
 `;
 
-export const typography = {
+const typography = {
     Heading: Heading,
     Body: Body,
     BodyBold: BodyBold,
@@ -72,3 +71,5 @@ export const typography = {
     Date: Date,
     Titles: Titles
 };
+
+export default typography;
